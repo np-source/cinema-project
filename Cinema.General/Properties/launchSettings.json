@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:63903",
-      "sslPort": 44327
+      "applicationUrl": "http://localhost:65454",
+      "sslPort": 44379
     }
   },
   "profiles": {
@@ -16,7 +16,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "Cinema": {
+    "CinemaGeneral": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

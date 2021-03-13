@@ -1,0 +1,31 @@
+﻿@page
+@model CinemaGeneral.Pages.Films.FilmsModel
+@{
+    ViewData["Title"] = "Films";
+}
+
+<h1 class="text-center">Films</h1>
+
+<div class="row">
+    @foreach (var film in Model.Films)
+    {
+        var imagePath = $"/images/{film.ImagePath ?? "no-image.png"}";
+
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <div class="card-header text-center">
+                        <h3>@film.Name</h3>
+                        <p>@film.Genre.ToString()</p>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img-top" src="@imagePath" alt="Not found" />
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-success m-0 col-7">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
