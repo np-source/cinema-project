@@ -1,0 +1,27 @@
+﻿@page "{id}"
+@model Cinema.General.Pages.Films.DetailsModel
+@{
+    ViewData["Title"] = "Film details";
+    var film = Model.Film;
+    var imagePath = $"/images/{film.ImagePath ?? "no-image.png"}";
+}
+
+<div class="row justify-content-center">
+    <div class="card-deck">
+        <div class="card m-5">
+            <div class="card-header text-center">
+                <h3>@film.Name</h3>
+                <p>@film.Genre.ToString()</p>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top" src="@imagePath" alt="Not found" />
+            </div>
+            <div class="card-footer text-center">
+                <a asp-page="/Films/Films" class="btn btn-success m-0 col-7">Back</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+    </div>
+</div>
