@@ -7,9 +7,9 @@ namespace CinemaGeneral.Pages.Films
 {
     public class FilmsModel : PageModel
     {
-        private readonly IRepository<Film> _db;
+        private readonly IFilmRepository _db;
 
-        public FilmsModel(IRepository<Film> db)
+        public FilmsModel(IFilmRepository db)
         {
             _db = db;
         }
