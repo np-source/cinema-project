@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Cinema.Services
 {
-    public class MockRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class MockRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private List<Film> _filmsList;
 

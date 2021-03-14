@@ -1,3 +1,4 @@
+using Cinema.Models;
 using Cinema.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
