@@ -30,9 +30,7 @@
             <div class="card-deck">
                 <div class="card m-5">
                     <div class="card-header text-center">
-                        <h3>@film.Name</h3>
-                        <h3>@session.Time.ToString("d MMMM HH:MM")</h3>
-                        <p>@film.Genre.ToString()</p>
+                        <h3>@session.Time.ToString("d MMMM HH:mm")</h3>
                     </div>
                     <div class="card-footer text-center">
                         <a asp-page="/Sessions/Sessions" asp-route-id="@session.Id" class="btn btn-success m-0 col-7">View</a>

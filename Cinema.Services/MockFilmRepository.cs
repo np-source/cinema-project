@@ -25,7 +25,7 @@ namespace Cinema.Services
                 {
                     Id = 1,
                     Name = "Iron man",
-                    Genre = Genre.Drama
+                    Genre = Genre.Drama,
                 },
                 new Film()
                 {
@@ -52,7 +52,7 @@ namespace Cinema.Services
                 new Session()
                 {
                     Id = 0,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 20, 10, 15, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
