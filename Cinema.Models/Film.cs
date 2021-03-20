@@ -7,6 +7,7 @@ namespace Cinema.Models
         public string Name { get; set; }
         public string ImagePath { get; set; }
         public Genre Genre { get; set; }
-        public List<Place> Places { get; set; }
+        public List<Session> Sessions { get; set; }
+
     }
 }
