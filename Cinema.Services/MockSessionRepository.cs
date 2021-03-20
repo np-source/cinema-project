@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Cinema.Services
 {
-    public class MockFilmRepository : MockBaseRepository<Film>, IFilmRepository
+    public class MockSessionRepository : MockBaseRepository<Session>, ISessionRepository
     {
-        public MockFilmRepository()
+        public MockSessionRepository()
         {
             List<Film> Films = new List<Film>();
             List<Session> Sessions = new List<Session>();
@@ -53,42 +53,36 @@ namespace Cinema.Services
                 {
                     Id = 0,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 1,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 2,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 3,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 4,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 5,
                     Time = DateTime.Now,
-                    Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 }
             };
@@ -170,7 +164,7 @@ namespace Cinema.Services
             Films.First(x => x.Id == 0).Sessions = Sessions;
             Sessions.First(x => x.Id == 0).Places = Places;
 
-            _entitiesList = Films;
+            _entitiesList = Sessions;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CinemaGeneral
         {
             //services.AddSingleton(typeof(IRepository<>), typeof(MockRepository<>));
             services.AddScoped<IFilmRepository, MockFilmRepository>();
+            services.AddScoped<ISessionRepository, MockSessionRepository>();
             services.AddRazorPages();
 
             services.Configure<RouteOptions>(options =>

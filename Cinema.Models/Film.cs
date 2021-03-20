@@ -8,6 +8,5 @@ namespace Cinema.Models
         public string ImagePath { get; set; }
         public Genre Genre { get; set; }
         public List<Session> Sessions { get; set; }
-
     }
 }

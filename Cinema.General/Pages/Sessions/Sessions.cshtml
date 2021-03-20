@@ -1,0 +1,44 @@
+﻿@page "{id}"
+@model Cinema.General.Pages.Sessions.SessionsModel
+@{
+    ViewData["Title"] = "Sessions";
+    var session = Model.Session;
+    var film = session.Film;
+    var imagePath = $"/images/{film.ImagePath ?? "no-image.png"}";
+}
+
+<div class="row justify-content-center">
+    <div class="card-deck">
+        <div class="card m-5">
+            <div class="card-header text-center">
+                <h3>@film.Name</h3>
+                <p>@film.Genre.ToString()</p>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top" src="@imagePath" alt="Not found" />
+            </div>
+            <div class="card-footer text-center">
+                <a asp-page="/Films/Details" asp-route-id="@film.Id" class="btn btn-success m-0 col-7">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center" style="background-color: darkgray; height: 30px"></h1>
+
+<div class="row justify-content-center">
+    @foreach (var place in session.Places.OrderBy(x => x.Row).ThenBy(x => x.Position))
+    {
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header text-center">
+                    <h4>@place.Row - @place.Position</h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center">
+    <a href="#" class="btn btn-success m-0 col-2">Reserve</a>
+</div>
