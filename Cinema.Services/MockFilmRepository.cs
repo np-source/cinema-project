@@ -19,7 +19,8 @@ namespace Cinema.Services
                 {
                     Id = 0,
                     Name = "Tor",
-                    Genre = Genre.Comedy
+                    Genre = Genre.Comedy,
+                    ImagePath = "tor.png"
                 },
                 new Film()
                 {
@@ -59,35 +60,35 @@ namespace Cinema.Services
                 new Session()
                 {
                     Id = 1,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 21, 11, 20, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 2,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 20, 21, 30, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 3,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 22, 13, 15, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 4,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 22, 16, 20, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 },
                 new Session()
                 {
                     Id = 5,
-                    Time = DateTime.Now,
+                    Time = new DateTime(2020, 3, 23, 10, 00, 0),
                     Places = Places,
                     Film = Films.First(x => x.Id ==  0)
                 }
