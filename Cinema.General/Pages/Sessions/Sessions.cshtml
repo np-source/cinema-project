@@ -40,5 +40,7 @@
 </div>
 
 <div class="text-center">
-    <a href="#" class="btn btn-success m-0 col-2">Reserve</a>
+    <form method="POST">
+        <button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" type="submit" class="btn btn-success m-0 col-2">Reserve</button>
+    </form>
 </div>
