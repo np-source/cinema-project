@@ -30,7 +30,7 @@
     @foreach (var place in session.Places.OrderBy(x => x.Row).ThenBy(x => x.Position))
     {
         <div class="card-deck">
-            <div class="card m-4">
+            <div id="@place.Id" class="place card m-4" style="color: green;">
                 <div class="card-header text-center">
                     <h4>@place.Row - @place.Position</h4>
                 </div>
@@ -40,7 +40,55 @@
 </div>
 
 <div class="text-center">
-    <form method="POST">
-        <button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" type="submit" class="btn btn-success m-0 col-2">Reserve</button>
+        <button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" id="reserve" type="submit" onclick="getSelectedPlaces()" class="btn btn-success m-0 col-2">Reserve</button>
+
+    <form method="post">
+        <input type="submit" asp-page-handler="Send" value="Save Details" onclick="getSelectedPlaces()"/>
     </form>
 </div>
+
+<script>
+
+    document.querySelectorAll('.place').forEach(item => {
+        item.addEventListener('click', event => {
+            event.currentTarget.classList.toggle('busy');
+
+            if (event.currentTarget.style.color == "red")
+                event.currentTarget.style.color = "green";
+            else
+                event.currentTarget.style.color = "red";
+        })
+    });
+
+    let places = [];
+
+    function getSelectedPlaces() {
+
+        document.querySelectorAll('.busy').forEach(item => {
+            tmp = {};
+            tmp.Id = item.id;
+            places.push(tmp)
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/sessions/sessions/@session.Id.ToString()/?handler=Send",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());
+            },
+            data: JSON.stringify({
+                places
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                alert(response);
+            },
+            failure: function (response) {
+                alert(response);
+            }
+        });
+    }
+
+</script>
