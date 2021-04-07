@@ -1,23 +1,17 @@
 ﻿using Cinema.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Cinema.Services
 {
-    public interface IRepository<TEntity> where TEntity : BaseEntity
+    public interface IRepository
     {
-        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
+        IEnumerable<Film> GetAllFilms();
+        Film GetFilmById(int id);
 
-        TEntity GetByID(int id);
-        
-        void Insert(TEntity entity);
+        IEnumerable<Session> GetAllSessions();
+        Session GetSessionById(int id);
 
-        void Update(TEntity entityToUpdate);
-
-        void Delete(TEntity entityToDelete);
-
-        IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters);
+        IEnumerable<Place> GetAllPlaces();
     }
 }

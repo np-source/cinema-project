@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,8 +32,10 @@ namespace CinemaGeneral
                 options.AllowSynchronousIO = true;
             });
             //services.AddSingleton(typeof(IRepository<>), typeof(MockRepository<>));
-            services.AddScoped<IFilmRepository, MockFilmRepository>();
-            services.AddScoped<ISessionRepository, MockSessionRepository>();
+
+            services.AddDbContext<CinemaDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddScoped<IRepository, Repository>();
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             services.AddRazorPages();
 

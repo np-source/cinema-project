@@ -3,26 +3,7 @@
 @{
     ViewData["Title"] = "Sessions";
     var session = Model.Session;
-    var film = session.Film;
-    var imagePath = $"/images/{film.ImagePath ?? "no-image.png"}";
 }
-
-<div class="row justify-content-center">
-    <div class="card-deck">
-        <div class="card m-5">
-            <div class="card-header text-center">
-                <h3>@film.Name</h3>
-                <p>@film.Genre.ToString()</p>
-            </div>
-            <div class="card-body">
-                <img class="card-img-top" src="@imagePath" alt="Not found" />
-            </div>
-            <div class="card-footer text-center">
-                <a asp-page="/Films/Details" asp-route-id="@film.Id" class="btn btn-success m-0 col-7">Back</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <h1 class="text-center" style="background-color: darkgray; height: 30px"></h1>
 
@@ -40,10 +21,10 @@
 </div>
 
 <div class="text-center">
-        <button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" id="reserve" type="submit" onclick="getSelectedPlaces()" class="btn btn-success m-0 col-2">Reserve</button>
+        @*<button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" id="reserve" type="submit" onclick="getSelectedPlaces()" class="btn btn-success m-0 col-2">Reserve</button>*@
 
     <form method="post">
-        <input type="submit" asp-page-handler="Send" value="Save Details" onclick="getSelectedPlaces()"/>
+        <input type="submit" asp-page-handler="Send" value="Reserve" onclick="getSelectedPlaces()"/>
     </form>
 </div>
 
@@ -83,10 +64,8 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                alert(response);
             },
             failure: function (response) {
-                alert(response);
             }
         });
     }

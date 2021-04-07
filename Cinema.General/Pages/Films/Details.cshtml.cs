@@ -7,9 +7,9 @@ namespace Cinema.General.Pages.Films
 {
     public class DetailsModel : PageModel
     {
-        private readonly IFilmRepository _db;
+        private readonly IRepository _db;
 
-        public DetailsModel(IFilmRepository db)
+        public DetailsModel(IRepository db)
         {
             _db = db;
         }
@@ -18,7 +18,7 @@ namespace Cinema.General.Pages.Films
 
         public IActionResult OnGet(int id)
         {
-            Film = _db.GetByID(id);
+            Film = _db.GetFilmById(id);
 
             return Page();
         }

@@ -2,12 +2,9 @@ using Cinema.Models;
 using Cinema.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Text.Json;
 
 namespace Cinema.General.Pages.Sessions
 {
@@ -23,9 +20,9 @@ namespace Cinema.General.Pages.Sessions
             public List<Place> places { get; set; }
         }
 
-        private readonly ISessionRepository _db;
+        private readonly IRepository _db;
 
-        public SessionsModel(ISessionRepository db)
+        public SessionsModel(IRepository db)
         {
             _db = db;
         }
@@ -34,45 +31,17 @@ namespace Cinema.General.Pages.Sessions
 
         public void OnGet(int id)
         {
-            Session = _db.GetByID(id);
+            Session = _db.GetSessionById(id);
+            Session.Places = _db.GetAllPlaces().ToList();
         }
 
-        //public void OnPostReservePlaces(int id)
-        //{
-        //    Session = _db.GetByID(id);
-
-        //    //foreach (var place in Session.Places)
-        //    //{
-        //    //    place.Position = 0;
-        //    //    place.Row = 0;
-        //    //}
-
-        //    _db.Update(Session);
-        //}
-
-        public ActionResult OnPostSend()
+        public void OnPostSend([FromBody] JsonElement body)
         {
-            Places places = null;
+            if (body.ValueKind.ToString() != "Undefined")
             {
-                var stream = new MemoryStream();
-                Request.Body.CopyTo(stream);
-                stream.Position = 0;
-                using (var reader = new StreamReader(stream))
-                {
-                    string requestBody = reader.ReadToEnd();
-
-                    if (requestBody.Length > 0)
-                    {
-                        var obj = JsonConvert.DeserializeObject<Places>(requestBody);
-
-                        if (obj != null)
-                            places = obj;
-
-                    }
-                }
+                //Session = _db.GetByID(0);
+                string json = System.Text.Json.JsonSerializer.Serialize(body);
             }
-
-            return new JsonResult(places);
         }
     }
 }
