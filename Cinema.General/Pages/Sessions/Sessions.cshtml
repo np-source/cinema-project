@@ -21,11 +21,11 @@
 </div>
 
 <div class="text-center">
-        @*<button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" id="reserve" type="submit" onclick="getSelectedPlaces()" class="btn btn-success m-0 col-2">Reserve</button>*@
+        <button asp-page-handler="ReservePlaces" asp-route-id="@session.Id" id="reserve" type="submit" onclick="getSelectedPlaces()" class="btn btn-success m-0 col-2">Забронировать</button>
 
-    <form method="post">
+    @*<form method="post">
         <input type="submit" asp-page-handler="Send" value="Reserve" onclick="getSelectedPlaces()"/>
-    </form>
+    </form>*@
 </div>
 
 <script>

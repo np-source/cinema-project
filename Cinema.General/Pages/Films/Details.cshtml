@@ -17,7 +17,7 @@
                 <img class="card-img-top" src="@imagePath" alt="Not found" />
             </div>
             <div class="card-footer text-center">
-                <a asp-page="/Films/Films" class="btn btn-success m-0 col-7">Back</a>
+                <a asp-page="/Films/Films" class="btn btn-success m-0 col-7">Назад</a>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                         <h3>@session.Time.ToString("d MMMM HH:mm")</h3>
                     </div>
                     <div class="card-footer text-center">
-                        <a asp-page="/Sessions/Sessions" asp-route-id="@session.Id" class="btn btn-success m-0 col-7">View</a>
+                        <a asp-page="/Sessions/Sessions" asp-route-id="@session.Id" class="btn btn-success m-0 col-7">Просмотр</a>
                     </div>
                 </div>
             </div>

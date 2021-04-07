@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0022: Использовать тело блока для методов
+csharp_style_expression_bodied_methods = when_on_single_line:none
+
+# IDE0022: Использовать тело выражения для методов
+dotnet_diagnostic.IDE0022.severity = none
